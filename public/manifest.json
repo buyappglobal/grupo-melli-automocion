@@ -1,0 +1,17 @@
+{
+  "name": "Grupo Melli Automoción",
+  "short_name": "Grupo Melli",
+  "description": "Soluciones integrales para tu vehículo desde 1980",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#003366",
+  "theme_color": "#003366",
+  "icons": [
+    {
+      "src": "https://melliautomociongrupo.com/wp-content/uploads/sites/331/2024/07/logo-GRUPO-MELLI-AUTOMOCION-blanco-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
