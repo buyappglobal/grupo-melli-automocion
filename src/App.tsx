@@ -51,7 +51,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 font-sans transition-colors duration-300">
       <header className="relative overflow-hidden bg-melli-blue dark:bg-gray-800 py-16 px-4 shadow-2xl">
         {/* Theme Toggle Integrated in Hero */}
-        <div className="absolute top-4 right-4 z-20">
+        <div className="absolute top-4 right-4 z-20 flex flex-col gap-3">
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -60,6 +60,16 @@ export default function App() {
             aria-label={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
           >
             {isDarkMode ? <Sun className="w-6 h-6" aria-hidden="true" /> : <Moon className="w-6 h-6" aria-hidden="true" />}
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => handleShare('https://melliautomociongrupo.com/', 'Grupo Melli Automoción')}
+            className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-melli-accent"
+            aria-label="Compartir sitio web"
+          >
+            <Share2 className="w-6 h-6" aria-hidden="true" />
           </motion.button>
         </div>
 
