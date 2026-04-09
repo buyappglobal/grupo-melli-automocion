@@ -65,7 +65,7 @@ export default function App() {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => handleShare('https://melliautomociongrupo.com/', 'Grupo Melli Automoción')}
+            onClick={() => handleShare('https://grupomelliautomocion.com/', 'Grupo Melli Automoción')}
             className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-melli-accent"
             aria-label="Compartir sitio web"
           >
