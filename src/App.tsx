@@ -16,9 +16,9 @@ export default function App() {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
       if (saved) return saved === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return true; // Default to dark mode
     }
-    return false;
+    return true;
   });
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function App() {
           <motion.h1 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4 drop-shadow-md"
+            className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4 drop-shadow-md text-center"
           >
             Grupo Melli Automoción
           </motion.h1>
@@ -174,13 +174,22 @@ export default function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 py-12 pb-20">
-        <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-20" role="list">
-          {links.map((link) => (
+        <motion.section 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-20" 
+          role="list"
+        >
+          {links.map((link, index) => (
             <motion.div
               key={link.name}
               role="listitem"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               whileHover={{ y: -5 }}
               className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-melli-accent flex flex-col justify-between transition-colors"
             >
@@ -208,16 +217,23 @@ export default function App() {
               </div>
             </motion.div>
           ))}
-        </section>
+        </motion.section>
 
-        <div className="grid gap-12 lg:grid-cols-2 mb-20">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1 }}
+          className="grid gap-12 lg:grid-cols-2 mb-20"
+        >
           <motion.section 
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6 text-center lg:text-left"
           >
-            <div className="flex items-center gap-3 text-melli-blue dark:text-blue-300">
+            <div className="flex items-center justify-center lg:justify-start gap-3 text-melli-blue dark:text-blue-300">
               <Info className="w-6 h-6" />
               <h2 className="text-2xl font-bold">Quiénes Somos</h2>
             </div>
@@ -230,12 +246,13 @@ export default function App() {
           </motion.section>
 
           <motion.section 
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6 text-center lg:text-left"
           >
-            <div className="flex items-center gap-3 text-melli-blue dark:text-blue-300">
+            <div className="flex items-center justify-center lg:justify-start gap-3 text-melli-blue dark:text-blue-300">
               <History className="w-6 h-6" />
               <h2 className="text-2xl font-bold">Nuestra Historia</h2>
             </div>
@@ -246,7 +263,7 @@ export default function App() {
               Más de cuatro décadas de experiencia nos avalan como expertos en el mundo del motor, manteniendo siempre los valores de confianza y cercanía que nos vieron nacer.
             </p>
           </motion.section>
-        </div>
+        </motion.div>
       </main>
 
       <footer className="bg-melli-blue text-white py-12 px-4">
